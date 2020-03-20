@@ -1,0 +1,21 @@
+function [Features ] = mfcc( samples,Fs )
+     y = buffer(samples, 440, 220); 
+     h = hamming (440);
+     h=h';
+     [m,n] = size(y);
+     H = ones(n,1)*h;
+     y=y';
+     yh=y.*H;
+     yh=yh';
+     yf = fft(yh,512);
+     yps = (abs(yf)).^2;
+     yps = yps(1:256,:);
+     Triangles = fft2melmx(256, 22050, 8, 1.0, 40, 11025);
+     ymel = Triangles * yps;
+     ymel= ymel+ mean(ymel(:)); 
+     ymel = log10(ymel); 
+     ydct = dct(ymel, 14);
+     x= ydct';
+     x = bsxfun(@minus, x, mean(x)); 
+     Features = bsxfun(@rdivide, x, std(x)); 
+end
