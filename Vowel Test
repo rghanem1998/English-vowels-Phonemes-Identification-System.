@@ -1,0 +1,103 @@
+function vowel_test(y,fs,value,i)
+global had_means hade_means hard_means head_means heard_means heed_means hid_means hide_means hoard_means hod_means hood_means hudd_means whod_means acc
+data_y=mfcc(y,fs);
+%[idex, data_y] = kmeans(data_y, 40);
+evaluate=[];
+%make the decision
+d = dist2((data_y), (had_means));
+evaluate(1)= mean(min(d,[],2));
+d = dist2((data_y), (hade_means));
+evaluate(2) = mean(min(d,[],2));
+d = dist2((data_y), (hard_means));
+evaluate(3) = mean(min(d,[],2));
+d = dist2((data_y), (head_means));
+evaluate(4) = mean(min(d,[],2));
+d = dist2((data_y), (heard_means));
+evaluate(5) = mean(min(d,[],2));
+d = dist2((data_y), (heed_means));
+evaluate(6) = mean(min(d,[],2));
+d = dist2((data_y), (hid_means));
+evaluate(7) = mean(min(d,[],2));
+d = dist2((data_y), (hide_means));
+evaluate(8) = mean(min(d,[],2));
+d = dist2((data_y), (hoard_means));
+evaluate(9) = mean(min(d,[],2));
+d = dist2((data_y), (hod_means));
+evaluate(10) = mean(min(d,[],2));
+d = dist2((data_y), (hood_means));
+evaluate(11) = mean(min(d,[],2));
+d = dist2((data_y), (hudd_means));
+evaluate(12) = mean(min(d,[],2));
+d = dist2((data_y), (whod_means));
+evaluate(13) = mean(min(d,[],2));
+evaluate=(evaluate)';
+[M I]=min(evaluate);
+if(I==1)
+    fprintf('Test file [%s] #%d classified as had \n',value,i);
+    if(strcmp(value,'had'))
+       acc=acc+1;
+    end
+elseif(I==2)
+    fprintf('Test file [%s] #%d classified as hade \n',value,i);
+    if(strcmp(value,'hade'))
+       acc=acc+1;
+    end
+elseif(I==3)
+    fprintf('Test file [%s] #%d classified as hard \n',value,i);
+    if(strcmp(value,'hard'))
+       acc=acc+1;
+    end
+elseif(I==4)
+     fprintf('Test file [%s] #%d classified as head \n',value,i);
+     if(strcmp(value,'head'))
+       acc=acc+1;
+    end
+elseif(I==5)
+     fprintf('Test file [%s] #%d classified as heard \n',value,i);
+     if(strcmp(value,'heard'))
+       acc=acc+1;
+    end
+elseif(I==6)
+     fprintf('Test file [%s] #%d classified as heed \n',value,i);
+     if(strcmp(value,'heed'))
+       acc=acc+1;
+    end
+elseif(I==7)
+     fprintf('Test file [%s] #%d classified as hid \n',value,i);
+     if(strcmp(value,'hid'))
+       acc=acc+1;
+    end
+elseif(I==8)
+     fprintf('Test file [%s] #%d classified as hide \n',value,i);
+     if(strcmp(value,'hide'))
+       acc=acc+1;
+    end
+elseif(I==9)
+     fprintf('Test file [%s] #%d classified as hoard \n',value,i);
+     if(strcmp(value,'hoard'))
+       acc=acc+1;
+    end
+elseif(I==10)
+     fprintf('Test file [%s] #%d classified as hod \n',value,i);
+     if(strcmp(value,'hod'))
+       acc=acc+1;
+    end
+elseif(I==11)
+     fprintf('Test file [%s] #%d classified as hood \n',value,i);
+     if(strcmp(value,'hood'))
+       acc=acc+1;
+    end
+elseif(I==12)
+     fprintf('Test file [%s] #%d classified as hudd \n',value,i);
+     if(strcmp(value,'hudd'))
+       acc=acc+1;
+    end
+elseif(I==13)
+     fprintf('Test file [%s] #%d classified as whod \n',value,i);
+     if(strcmp(value,'whod'))
+       acc=acc+1;
+    end
+end  
+
+
+end
